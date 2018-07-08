@@ -56,6 +56,7 @@
                     <navigationItem key="navigationItem" id="Agb-Lv-7ib"/>
                     <connections>
                         <outlet property="submitButton" destination="DPg-Jo-9Oe" id="nk3-zf-aeR"/>
+                        <outlet property="textField" destination="6yP-FF-qaO" id="ZM1-gF-grL"/>
                         <outlet property="zipCodeLabel" destination="CJq-JO-zwf" id="Qmp-8f-4CS"/>
                     </connections>
                 </viewController>

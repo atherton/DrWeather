@@ -14,6 +14,7 @@ class ZipCodeViewController: UIViewController {
             zipCodeLabel.text = "Enter a ZIP code to see its next 5 days of weather"
         }
     }
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var submitButton: UIButton! {
         didSet {
             submitButton.setTitle("Show me some weather!", for: .normal)
@@ -26,11 +27,17 @@ class ZipCodeViewController: UIViewController {
     }
 
     @IBAction func submitButtonPressed(_ sender: Any) {
+        guard let zipCodeStr = textField.text, zipCodeStr.count == 5, let zipCode = Int(zipCodeStr) else {
+            // TODO present an alert
+            print("not a valid zip code!!")
+            return
+        }
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "ResultsTableViewController")
             as? ResultsTableViewController else {
                 print("couldn't instantiate ResultsTableViewController")
                 return
         }
+        controller.zipCode = zipCode
         navigationController?.pushViewController(controller, animated: true)
     }
 }
