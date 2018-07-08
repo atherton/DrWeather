@@ -22,14 +22,16 @@ class ZipCodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        navigationController?.navigationBar.isHidden = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func submitButtonPressed(_ sender: Any) {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: "ResultsTableViewController")
+            as? ResultsTableViewController else {
+                print("couldn't instantiate ResultsTableViewController")
+                return
+        }
+        navigationController?.pushViewController(controller, animated: true)
     }
-
-
 }
 
