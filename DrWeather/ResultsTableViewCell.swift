@@ -9,16 +9,24 @@
 import UIKit
 
 class ResultsTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var highTempLabel: UILabel! {
+        didSet {
+            format(label: highTempLabel)
+            highTempLabel.backgroundColor = .red
+            highTempLabel.text = " High: "
+        }
+    }
+    @IBOutlet weak var lowTempLabel: UILabel! {
+        didSet {
+            format(label: lowTempLabel)
+            lowTempLabel.backgroundColor = .blue
+            lowTempLabel.text = " Low: "
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    private func format(label: UILabel) {
+        label.layer.cornerRadius = 2
+        label.clipsToBounds = true
+        label.textColor = .white
     }
-
 }

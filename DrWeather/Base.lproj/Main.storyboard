@@ -73,13 +73,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="J7a-3H-aHg">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultsCell" rowHeight="175" id="J7a-3H-aHg" customClass="ResultsTableViewCell" customModule="DrWeather" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="175"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J7a-3H-aHg" id="GUX-dV-P5s">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="174.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzR-Pc-CgH" userLabel="High Label">
+                                            <rect key="frame" x="267" y="76" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3O-on-gtx" userLabel="Low Label">
+                                            <rect key="frame" x="321" y="77" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="W3O-on-gtx" firstAttribute="leading" secondItem="bzR-Pc-CgH" secondAttribute="trailing" constant="12" id="L0F-Gc-wGW"/>
+                                        <constraint firstAttribute="trailing" secondItem="W3O-on-gtx" secondAttribute="trailing" constant="12" id="kSI-92-va8"/>
+                                        <constraint firstItem="bzR-Pc-CgH" firstAttribute="centerY" secondItem="GUX-dV-P5s" secondAttribute="centerY" id="qiD-TF-6gM"/>
+                                        <constraint firstItem="W3O-on-gtx" firstAttribute="centerY" secondItem="GUX-dV-P5s" secondAttribute="centerY" id="u3H-b0-581"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="highTempLabel" destination="bzR-Pc-CgH" id="nYQ-h0-VvL"/>
+                                    <outlet property="lowTempLabel" destination="W3O-on-gtx" id="CH5-cR-prG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -90,7 +114,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0D8-lO-D1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="116"/>
+            <point key="canvasLocation" x="1748" y="115.59220389805098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SD6-aW-CPA">

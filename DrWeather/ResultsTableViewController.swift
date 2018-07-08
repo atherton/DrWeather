@@ -16,10 +16,10 @@ class ResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "resultsCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         if let zipCode = zipCode {
             title = String(zipCode)
-            getData(for: zipCode)
+//            getData(for: zipCode)
         }
     }
     
@@ -43,12 +43,17 @@ class ResultsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "resultsCell", for: indexPath)
-
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = .red
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "resultsCell",
+                                                       for: indexPath) as? ResultsTableViewCell else {
+                                                        return UITableViewCell()
         }
+        cell.highTempLabel.text?.append("85 ")
+        cell.lowTempLabel.text?.append("70 ")
         cell.textLabel?.text = days[indexPath.row]
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
 }

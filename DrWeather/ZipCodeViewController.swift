@@ -27,11 +27,11 @@ class ZipCodeViewController: UIViewController {
     }
 
     @IBAction func submitButtonPressed(_ sender: Any) {
-        guard let zipCodeStr = textField.text, zipCodeStr.count == 5, let zipCode = Int(zipCodeStr) else {
-            // TODO present an alert
-            print("not a valid zip code!!")
-            return
-        }
+//        guard let zipCodeStr = textField.text, zipCodeStr.count == 5, let zipCode = Int(zipCodeStr) else {
+//            // TODO present an alert
+//            print("not a valid zip code!!")
+//            return
+//        }
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "ResultsTableViewController")
             as? ResultsTableViewController else {
                 print("couldn't instantiate ResultsTableViewController")
