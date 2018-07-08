@@ -22,7 +22,7 @@ class APIManager: NSObject {
         case failure(Error)
     }
     
-    func getWeather(for zipCode: Int, completion: ((Result<[WeatherData]>) -> Void)?) {
+    static func getWeather(for zipCode: Int, completion: ((Result<[WeatherData]>) -> Void)?) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "samples.openweathermap.org" // TODO this is just a sample. Use api.openweathermap.org

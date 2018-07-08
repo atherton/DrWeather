@@ -11,7 +11,7 @@ import UIKit
 class ZipCodeViewController: UIViewController {
     @IBOutlet weak var zipCodeLabel: UILabel! {
         didSet {
-            zipCodeLabel.text = "Enter a ZIP code to see its next 5 days of weather"
+            zipCodeLabel.text = "Enter a U.S. ZIP code to see its next 5 days of weather"
         }
     }
     @IBOutlet weak var textField: UITextField!

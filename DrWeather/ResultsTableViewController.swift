@@ -11,15 +11,27 @@ import UIKit
 class ResultsTableViewController: UITableViewController {
     
     var zipCode: Int?
+    var forecasts = [WeatherData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "resultsCell")
         if let zipCode = zipCode {
             title = String(zipCode)
+            getData(for: zipCode)
         }
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "resultsCell")
-        
+    }
+    
+    private func getData(for zipCode: Int) {
+        APIManager.getWeather(for: zipCode) { (result) in
+            switch result {
+            case .success(let forecasts):
+                self.forecasts = forecasts
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            }
+        }
     }
 
     // MARK: - Table view data source
