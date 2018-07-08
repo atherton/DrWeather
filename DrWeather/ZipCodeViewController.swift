@@ -37,7 +37,7 @@ class ZipCodeViewController: UIViewController {
                 print("couldn't instantiate ResultsTableViewController")
                 return
         }
-        controller.zipCode = zipCode
+        controller.zipCode = 94040 // TODO zipCode
         navigationController?.pushViewController(controller, animated: true)
     }
 }

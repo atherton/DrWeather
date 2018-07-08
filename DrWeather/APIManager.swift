@@ -26,7 +26,7 @@ class APIManager: NSObject {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "samples.openweathermap.org" // TODO this is just a sample. Use api.openweathermap.org
-        urlComponents.path = "/forecast"
+        urlComponents.path = "/data/2.5/forecast"
         
         let zipCodeItem = URLQueryItem(name: "zip", value: "\(zipCode)")
 //        let unitsItem = URLQueryItem(name: "units", value: "imperial") // uncomment when you're ready to try for real
