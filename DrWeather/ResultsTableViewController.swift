@@ -7,12 +7,13 @@
 //
 
 import UIKit
+//import Foundation
 
 class ResultsTableViewController: UITableViewController {
     
     var zipCode: Int?
-    var forecasts: WeatherData?
-    let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] // TODO remove
+//    var forecasts: [(high: Int, low: Int)]
+    let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] // TODO remove when pulling in proper days
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +29,31 @@ class ResultsTableViewController: UITableViewController {
         APIManager.getWeather(for: zipCode) { (result) in
             switch result {
             case .success(let weatherData):
-                self.forecasts = weatherData
+//                self.forecasts = weatherData
+                self.parse(weatherData: weatherData)
             case .failure(let error):
                 fatalError(error.localizedDescription) // TODO present API failed alert instead
+            }
+        }
+    }
+
+    private func parse(weatherData: WeatherData) {
+        let dateFormatterIn = DateFormatter()
+        dateFormatterIn.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        let dateFormatterOut = DateFormatter()
+        dateFormatterOut.dateFormat = "MM-dd-yyyy"
+
+
+        var date = Date(timeIntervalSince1970: 0)
+        for item in weatherData.list {
+            if let itemDate = dateFormatterIn.date(from: item.date) {
+                if Calendar.current.compare(date, to: itemDate, toGranularity: .day) != .orderedSame {
+                    date = itemDate
+                    
+                } else {
+
+                }
             }
         }
     }
