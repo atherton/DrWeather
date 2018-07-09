@@ -9,11 +9,28 @@
 import UIKit
 
 struct WeatherData: Codable {
-    let cod: String
-    let message: Double
     let cnt: Int
-    let list: String
-    let city: String
+    let list: [ListItems]
+}
+
+struct ListItems: Codable {
+    let date: String
+    let main: MainItems
+
+    enum CodingKeys: String, CodingKey {
+        case date = "dt_txt"
+        case main
+    }
+}
+
+struct MainItems: Codable {
+    let minTemp: Double
+    let maxTemp: Double
+
+    enum CodingKeys: String, CodingKey {
+        case minTemp = "temp_min"
+        case maxTemp = "temp_max"
+    }
 }
 
 class APIManager: NSObject {
@@ -22,7 +39,7 @@ class APIManager: NSObject {
         case failure(Error)
     }
     
-    static func getWeather(for zipCode: Int, completion: ((Result<[WeatherData]>) -> Void)?) {
+    static func getWeather(for zipCode: Int, completion: ((Result<WeatherData>) -> Void)?) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "samples.openweathermap.org" // TODO this is just a sample. Use api.openweathermap.org
@@ -54,12 +71,11 @@ class APIManager: NSObject {
                     // Create an instance of JSONDecoder to decode the JSON data to our
                     // Codable struct
                     let decoder = JSONDecoder()
-                    
                     do {
                         // We would use WeatherData.self for JSON representing a single WeatherData
                         // object, and [WeatherData].self for JSON representing an array of
                         // WeatherData objects
-                        let forecasts = try decoder.decode([WeatherData].self, from: jsonData)
+                        let forecasts = try decoder.decode(WeatherData.self, from: jsonData)
                         completion?(.success(forecasts))
                     } catch {
                         completion?(.failure(error))

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter a ZIP Code" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJq-JO-zwf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter a ZIP Code" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJq-JO-zwf">
                                 <rect key="frame" x="96" y="288.5" width="184" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -98,6 +98,7 @@
                                         <constraint firstAttribute="trailing" secondItem="W3O-on-gtx" secondAttribute="trailing" constant="12" id="kSI-92-va8"/>
                                         <constraint firstItem="bzR-Pc-CgH" firstAttribute="centerY" secondItem="GUX-dV-P5s" secondAttribute="centerY" id="qiD-TF-6gM"/>
                                         <constraint firstItem="W3O-on-gtx" firstAttribute="centerY" secondItem="GUX-dV-P5s" secondAttribute="centerY" id="u3H-b0-581"/>
+                                        <constraint firstItem="bzR-Pc-CgH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GUX-dV-P5s" secondAttribute="leading" constant="50" id="xeo-Nu-Nh4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

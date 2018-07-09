@@ -11,7 +11,8 @@ import UIKit
 class ResultsTableViewController: UITableViewController {
     
     var zipCode: Int?
-    var forecasts = [WeatherData]()
+    var forecasts: WeatherData?
+    let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] // TODO remove
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,24 +20,22 @@ class ResultsTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         if let zipCode = zipCode {
             title = String(zipCode)
-//            getData(for: zipCode)
+            getData(for: zipCode)
         }
     }
     
     private func getData(for zipCode: Int) {
         APIManager.getWeather(for: zipCode) { (result) in
             switch result {
-            case .success(let forecasts):
-                self.forecasts = forecasts
+            case .success(let weatherData):
+                self.forecasts = weatherData
             case .failure(let error):
-                fatalError(error.localizedDescription)
+                fatalError(error.localizedDescription) // TODO present API failed alert instead
             }
         }
     }
 
     // MARK: - Table view data source
-    
-    let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
